@@ -6,7 +6,7 @@
     # ansible-playbook roboshop.yaml -e "action=delete"
     instances: ["mongodb", "redis", "mysql", "rabbitmq"]
     action: create
-    domain_name: daws92s.store
+    domain_name: bpking.store
     ami_id: ami-0055977a6e828a4f4
   tasks:
   - name: create ec2 instance
@@ -30,7 +30,7 @@
     amazon.aws.route53:
       state: present
       zone: "{{ domain_name }}"
-      record: "{{ item.item }}.{{ domain_name }}" # mongodb.daws92s.store
+      record: "{{ item.item }}.{{ domain_name }}" # mongodb.bpking.store
       type: A
       ttl: 1
       value: "{{ item.instances[0].private_ip_address }}"
